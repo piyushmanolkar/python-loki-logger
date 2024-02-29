@@ -1,0 +1,1 @@
+from python_loki_logger.Logger import LokiLogger
