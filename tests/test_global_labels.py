@@ -1,6 +1,5 @@
 """Tests for global labels functionality."""
 
-import json
 import pytest
 import requests_mock
 
@@ -19,7 +18,7 @@ class TestGlobalLabels:
 
     @pytest.mark.integration
     def test_logger_without_global_labels(self, base_url):
-        """Test that logger initializes with empty dict when no global labels provided."""
+        """Test logger initializes with empty dict when no global labels."""
         logger = LokiLogger(baseUrl=base_url)
         assert logger.global_labels == {}
 

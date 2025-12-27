@@ -211,7 +211,7 @@ class TestLokiLoggerErrors:
         with requests_mock.Mocker() as m:
             m.post(
                 f"{base_url}/loki/api/v1/push",
-                exc=requests_mock.exceptions.ConnectTimeout,
+                exc=requests.exceptions.ConnectTimeout,
             )
 
             logger = LokiLogger(baseUrl=base_url)

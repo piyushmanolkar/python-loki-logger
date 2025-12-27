@@ -37,14 +37,17 @@ class LokiLogger:
         """Initialize the Loki logger.
 
         Args:
-            baseUrl: Base URL of the Loki instance (e.g., "https://loki.example.com").
-                    Must not end with a trailing slash.
-            auth: Optional authentication tuple (username, password) for basic auth.
-            severity_label: Label key to use for severity level. Defaults to "level".
-            pushUrl: Path to the Loki push API endpoint. Defaults to "/loki/api/v1/push".
-            labels: Optional global labels to include in all log messages. These labels
-                   will be merged with method-specific labels. Method labels take precedence
-                   if there are conflicts.
+            baseUrl: Base URL of the Loki instance (e.g.,
+                "https://loki.example.com"). Must not end with a trailing slash.
+            auth: Optional authentication tuple (username, password) for basic
+                auth.
+            severity_label: Label key to use for severity level. Defaults to
+                "level".
+            pushUrl: Path to the Loki push API endpoint. Defaults to
+                "/loki/api/v1/push".
+            labels: Optional global labels to include in all log messages.
+                These labels will be merged with method-specific labels.
+                Method labels take precedence if there are conflicts.
 
         Raises:
             LokiConfigurationError: If baseUrl is invalid or ends with a trailing slash.
@@ -125,7 +128,7 @@ class LokiLogger:
             # Loki returns 204 No Content on success
             if resp.status_code != 204:
                 raise LokiPushError(
-                    f"Failed to push log to Loki",
+                    "Failed to push log to Loki",
                     status_code=resp.status_code,
                     response_text=resp.text,
                 )
@@ -155,7 +158,9 @@ class LokiLogger:
             LokiPushError: If Loki returns a non-204 status code.
 
         Example:
-            >>> logger.customLevel("critical", "Database is down", labels={"db": "postgres"})
+            >>> logger.customLevel(
+            ...     "critical", "Database is down", labels={"db": "postgres"}
+            ... )
         """
         self._call_api(level, message, extras, labels)
 
