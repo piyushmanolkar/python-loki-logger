@@ -13,7 +13,7 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="python_loki_logger",
-    version="2.0.0",
+    version="3.0.0",
     description="A Python Library for pushing logs to Grafana-Loki",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -25,13 +25,17 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
     ],
     packages=["python_loki_logger"],
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        "requests>=2.25.0",
+    ],
+    python_requires=">=3.8",
 )
